@@ -1,0 +1,9 @@
+C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\SigConfig\bin\Debug\SigConfig.exe.config
+C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\SigConfig\obj\Debug\SigConfig.csprojResolveAssemblyReference.cache
+C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\SigConfig\obj\Debug\SigConfig.SigConfig.resources
+C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\SigConfig\obj\Debug\SigConfig.csproj.GenerateResource.Cache
+C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\SigConfig\bin\Debug\SigConfig.exe
+C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\SigConfig\bin\Debug\SigConfig.pdb
+C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\SigConfig\obj\Debug\SigConfig.exe
+C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\SigConfig\obj\Debug\SigConfig.pdb
+C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\SigConfig\obj\Debug\SigConfig.ProjectInstaller.resources
