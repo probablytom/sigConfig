@@ -40,8 +40,8 @@
             // serviceInstaller1
             // 
             this.serviceInstaller1.Description = "Syncs email signatures between Office365 and outlook for an organisation";
-            this.serviceInstaller1.DisplayName = "Roswell Signature Sync";
-            this.serviceInstaller1.ServiceName = "SigConfig";
+            this.serviceInstaller1.DisplayName = "Roswell Signature Sync Client";
+            this.serviceInstaller1.ServiceName = "SigConfigClient";
             this.serviceInstaller1.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             // 
             // ProjectInstaller

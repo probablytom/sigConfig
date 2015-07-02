@@ -5,19 +5,19 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SigConfig
+namespace WindowsService1
 {
     static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        static void Main(string[] args)
+        static void Main()
         {
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[] 
             { 
-                new SigConfigClient(args)
+                new Service1() 
             };
             ServiceBase.Run(ServicesToRun);
         }

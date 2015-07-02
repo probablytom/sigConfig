@@ -35,14 +35,14 @@ namespace SigConfig
         public long dwWaitHint;
     };
 
-    public partial class SigConfig : ServiceBase
+    public partial class SigConfigClient : ServiceBase
     {
 
 
         [DllImport("advapi32.dll", SetLastError=true)]
             private static extern bool SetServiceStatus(IntPtr handle, ref ServiceStatus serviceStatus);
 
-        public SigConfig(string[] args)
+        public SigConfigClient(string[] args)
         {
 
             this.AutoLog = false;
@@ -112,7 +112,7 @@ namespace SigConfig
             eventLog1.WriteEntry("Monitoring the System (timer awoken!)", EventLogEntryType.Information);
         }
 
-        public void OnContinue()
+        public override void OnContinue()
         {
             eventLog1.WriteEntry("In OnContinue.");
         }
