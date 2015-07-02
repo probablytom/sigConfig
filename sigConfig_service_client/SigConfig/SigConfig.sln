@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigConfigClient", "sigConfi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigConfigServer", "sigConfigServer\SigConfigServer.csproj", "{39282E40-FCB8-45C9-A8E7-A160E4B64753}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigConfigFrontEnd", "SigConfigFrontEnd\SigConfigFrontEnd.csproj", "{80FADA76-219D-4ED7-94CC-35F24D83EF71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{39282E40-FCB8-45C9-A8E7-A160E4B64753}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39282E40-FCB8-45C9-A8E7-A160E4B64753}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39282E40-FCB8-45C9-A8E7-A160E4B64753}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80FADA76-219D-4ED7-94CC-35F24D83EF71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80FADA76-219D-4ED7-94CC-35F24D83EF71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80FADA76-219D-4ED7-94CC-35F24D83EF71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80FADA76-219D-4ED7-94CC-35F24D83EF71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
