@@ -1,4 +1,4 @@
-﻿namespace SigConfig
+﻿namespace WindowsService1
 {
     partial class ProjectInstaller
     {
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.serviceProcessInstaller1 = new System.ServiceProcess.ServiceProcessInstaller();
-            this.sigConfigClient = new System.ServiceProcess.ServiceInstaller();
+            this.SigConfigServer = new System.ServiceProcess.ServiceInstaller();
             // 
             // serviceProcessInstaller1
             // 
@@ -37,24 +37,24 @@
             this.serviceProcessInstaller1.Password = null;
             this.serviceProcessInstaller1.Username = null;
             // 
-            // sigConfigClient
+            // SigConfigServer
             // 
-            this.sigConfigClient.Description = "Syncs an organisation\'s email signatures";
-            this.sigConfigClient.DisplayName = "Roswell Signature Sync Client";
-            this.sigConfigClient.ServiceName = "SigConfigClient";
-            this.sigConfigClient.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
+            this.SigConfigServer.Description = "Syncs outlook and outlook365 signatures for an organisation";
+            this.SigConfigServer.DisplayName = "Roswell Signature Sync Server";
+            this.SigConfigServer.ServiceName = "sigConfigServer";
+            this.SigConfigServer.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             // 
             // ProjectInstaller
             // 
             this.Installers.AddRange(new System.Configuration.Install.Installer[] {
             this.serviceProcessInstaller1,
-            this.sigConfigClient});
+            this.SigConfigServer});
 
         }
 
         #endregion
 
         private System.ServiceProcess.ServiceProcessInstaller serviceProcessInstaller1;
-        private System.ServiceProcess.ServiceInstaller sigConfigClient;
+        private System.ServiceProcess.ServiceInstaller SigConfigServer;
     }
 }

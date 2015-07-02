@@ -1,0 +1,9 @@
+C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\WindowsService1\bin\Debug\WindowsService1.exe.config
+C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\WindowsService1\bin\Debug\WindowsService1.exe
+C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\WindowsService1\bin\Debug\WindowsService1.pdb
+C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\WindowsService1\obj\Debug\SigConfigServer.csprojResolveAssemblyReference.cache
+C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\WindowsService1\obj\Debug\WindowsService1.ProjectInstaller.resources
+C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\WindowsService1\obj\Debug\WindowsService1.SigConfigServer.resources
+C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\WindowsService1\obj\Debug\SigConfigServer.csproj.GenerateResource.Cache
+C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\WindowsService1\obj\Debug\WindowsService1.exe
+C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\WindowsService1\obj\Debug\WindowsService1.pdb

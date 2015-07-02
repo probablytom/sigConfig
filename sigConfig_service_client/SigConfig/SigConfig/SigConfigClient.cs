@@ -60,19 +60,19 @@ namespace SigConfig
             }
 
             InitializeComponent();
-            eventLog1 = new System.Diagnostics.EventLog();
+            sigConfigClientServiceLog = new System.Diagnostics.EventLog();
             if (!System.Diagnostics.EventLog.SourceExists(eventSourceName))
             {
                 System.Diagnostics.EventLog.CreateEventSource(
                     eventSourceName, logName);
             }
-            eventLog1.Source = eventSourceName;
-            eventLog1.Log = logName;
+            sigConfigClientServiceLog.Source = eventSourceName;
+            sigConfigClientServiceLog.Log = logName;
         }
 
         protected override void OnStart(string[] args)
         {
-            eventLog1.WriteEntry("In OnStart");
+            sigConfigClientServiceLog.WriteEntry("In OnStart");
 
             // Setting up a timer to trigger every minute.
             System.Timers.Timer timer = new System.Timers.Timer();
@@ -93,7 +93,7 @@ namespace SigConfig
 
         protected override void OnStop()
         {
-            eventLog1.WriteEntry("In OnStop.");
+            sigConfigClientServiceLog.WriteEntry("In OnStop.");
 
             // Update the service state to pend ending.
             ServiceStatus serviceStatus = new ServiceStatus();
@@ -109,12 +109,12 @@ namespace SigConfig
         public void OnTimer(object sender, System.Timers.ElapsedEventArgs args)
         {
             // TODO: Insert monitoring activities here.
-            eventLog1.WriteEntry("Monitoring the System (timer awoken!)", EventLogEntryType.Information);
+            sigConfigClientServiceLog.WriteEntry("Monitoring the System (timer awoken!)", EventLogEntryType.Information);
         }
 
-        public override void OnContinue()
+        protected override void OnContinue()
         {
-            eventLog1.WriteEntry("In OnContinue.");
+            sigConfigClientServiceLog.WriteEntry("In OnContinue.");
         }
 
     }

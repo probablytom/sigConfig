@@ -1,6 +1,6 @@
 ﻿namespace WindowsService1
 {
-    partial class Service1
+    partial class SigConfigServer
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,10 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.sigConfigServerServiceLog = new System.Diagnostics.EventLog();
+            ((System.ComponentModel.ISupportInitialize)(this.sigConfigServerServiceLog)).BeginInit();
+            // 
+            // SigConfigServer
+            // 
             this.ServiceName = "Service1";
+            ((System.ComponentModel.ISupportInitialize)(this.sigConfigServerServiceLog)).EndInit();
+
         }
 
         #endregion
+
+        private System.Diagnostics.EventLog sigConfigServerServiceLog;
     }
 }
