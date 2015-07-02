@@ -117,7 +117,5 @@ namespace SigConfig
             eventLog1.WriteEntry("In OnContinue.");
         }
 
-        
-
     }
 }
