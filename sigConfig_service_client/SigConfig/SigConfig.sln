@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigConfigClient", "SigConfig\SigConfigClient.csproj", "{43175407-4F7A-41AB-A250-DE715C3DF654}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigConfigClient", "sigConfigClient\SigConfigClient.csproj", "{43175407-4F7A-41AB-A250-DE715C3DF654}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigConfigServer", "WindowsService1\SigConfigServer.csproj", "{39282E40-FCB8-45C9-A8E7-A160E4B64753}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigConfigServer", "sigConfigServer\SigConfigServer.csproj", "{39282E40-FCB8-45C9-A8E7-A160E4B64753}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
