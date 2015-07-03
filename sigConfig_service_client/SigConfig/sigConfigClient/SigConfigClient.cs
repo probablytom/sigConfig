@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Messaging;
+using System.Windows.Forms;
 
 
 namespace sigConfigClientService
@@ -45,6 +46,9 @@ namespace sigConfigClientService
         [DllImport("advapi32.dll", SetLastError=true)]
             private static extern bool SetServiceStatus(IntPtr handle, ref ServiceStatus serviceStatus);
 
+        private const string MESSAGE_QUEUE_PATH = @"Roswell19\Private$\sigConfigQueue";
+        private MessageQueue sigConfigMQ;
+
         public SigConfigClient(string[] args)
         {
 
@@ -77,10 +81,10 @@ namespace sigConfigClientService
             // Logging
             sigConfigClientServiceLog.WriteEntry("Roswell Email Signature Sync service (client mode) created.");
 
-            // TODO: CREATE MQ FOR SERVICE HERE
+            this.OnStart();
         }
 
-        protected override void OnStart(string[] args)
+        protected void OnStart()
         {
             sigConfigClientServiceLog.WriteEntry("In OnStart");
 
@@ -103,6 +107,7 @@ namespace sigConfigClientService
             // TODO: Check here that the MQ is still alive. If it isn't, wake it up. 
 
             // TODO: Check any messages in the queue
+            this.RecieveMessage();
 
             // TODO: For any messages we find, process them with [FUNCTION TO BE WRITTEN]().
         }
@@ -144,11 +149,27 @@ namespace sigConfigClientService
 
         }
 
-        // TODO: When do we use this?
+        // TODO: When do we use this? Mauybe after resuming from a pause?
         protected override void OnContinue()
         {
             sigConfigClientServiceLog.WriteEntry("Continuing.");
         }
 
+
+        // Get messages from the message queue
+        private void RecieveMessage()
+        {
+            try
+            {
+                sigConfigMQ = new MessageQueue(MESSAGE_QUEUE_PATH);
+                System.Messaging.Message message = sigConfigMQ.Receive(new TimeSpan(0, 0, 1));
+                message.Formatter = new XmlMessageFormatter(new String[] { "System.String,mscorlib" });
+                sigConfigClientServiceLog.WriteEntry("Message reads: " + message.Body.ToString());
+            }
+            catch (Exception ex)
+            {
+                sigConfigClientServiceLog.WriteEntry("No message found.");
+            }
+        }
     }
 }

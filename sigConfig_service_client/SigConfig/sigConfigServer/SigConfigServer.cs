@@ -8,6 +8,8 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using System.Messaging;
+using System.Windows.Forms;
 
 namespace sigConfigServerService
 {
@@ -43,6 +45,10 @@ namespace sigConfigServerService
         [DllImport("advapi32.dll", SetLastError = true)]
         private static extern bool SetServiceStatus(IntPtr handle, ref ServiceStatus serviceStatus);
 
+        // Messagequeue for all functions within namespace
+        private const string MESSAGE_QUEUE_PATH = @"Roswell19\Private$\sigConfigQueue";
+        private MessageQueue sigConfigMQ;
+
         public sigConfigServer(String[] args)
         {
 
@@ -77,9 +83,11 @@ namespace sigConfigServerService
             // Logging
             sigConfigServerServiceLog.WriteEntry("Roswell Email Signature Sync service (server mode) created.");
 
+            this.OnStart();
+
         }
 
-        protected override void OnStart(string[] args)
+        protected void OnStart()
         {
 
             // Update sigConfigServerService status to Start Pending.
@@ -94,8 +102,13 @@ namespace sigConfigServerService
 
             // Log that the service has begun. 
             sigConfigServerServiceLog.WriteEntry("Started sigConfig server.");
-   
+
+            
+
             // TODO: Check file status on service start and perform the first iteration of updates if so. 
+
+            SendMessage("Testing, testing!");
+
         }
 
         protected override void OnStop()
@@ -143,6 +156,40 @@ namespace sigConfigServerService
              */
         }
 
+        private void SendMessage(string messageText)
+        {
+            try
+            {
+
+                // Create the message queue
+                if (!MessageQueue.Exists(@"Roswell19\sigConfig"))
+                {
+                    sigConfigServerServiceLog.WriteEntry("Creating MQ.");
+                    sigConfigMQ = MessageQueue.Create(@"Roswell19\sigConfig");
+                    sigConfigServerServiceLog.WriteEntry("Created MQ.");
+                }
+
+                sigConfigServerServiceLog.WriteEntry("Attempting to send message.");
+                System.Messaging.Message message = new System.Messaging.Message();
+                message.Body = messageText;
+                message.Label = "Email Signature Update Required";
+                sigConfigServerServiceLog.WriteEntry("Creating transaction.");
+                MessageQueueTransaction signalTransaction = new MessageQueueTransaction();
+                sigConfigServerServiceLog.WriteEntry("Beginning transaction.");
+                signalTransaction.Begin();
+                sigConfigServerServiceLog.WriteEntry("Sending message");
+                sigConfigMQ.Send(message, signalTransaction);
+                sigConfigServerServiceLog.WriteEntry("Message sent");
+                signalTransaction.Commit();
+                sigConfigServerServiceLog.WriteEntry("Transaction committed");
+                sigConfigServerServiceLog.WriteEntry("Successfully sent message!"); 
+            }
+            catch (Exception ex)
+            {
+                sigConfigServerServiceLog.WriteEntry("Couldn't send message.\nError was: " + ex.Message);
+            }
+
+        }
     }
 
 }

@@ -1,0 +1,131 @@
+﻿Uninstalling assembly 'C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.InstallLog
+   assemblypath = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe
+Removing EventLog source SigConfigClient.
+Service SigConfigClient is being removed from the system...
+Service SigConfigClient was successfully removed from the system.
+Installing assembly 'C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.InstallLog
+   assemblypath = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe
+Installing service SigConfigClient...
+Service SigConfigClient has been successfully installed.
+Creating EventLog source SigConfigClient in log Application...
+Committing assembly 'C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.InstallLog
+   assemblypath = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe
+Uninstalling assembly 'C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.InstallLog
+   assemblypath = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe
+Removing EventLog source SigConfigClient.
+Service SigConfigClient is being removed from the system...
+Service SigConfigClient was successfully removed from the system.
+Installing assembly 'C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.InstallLog
+   assemblypath = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe
+Installing service SigConfigClient...
+Creating EventLog source SigConfigClient in log Application...
+Rolling back assembly 'C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.InstallLog
+   assemblypath = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe
+Restoring event log to previous state for source SigConfigClient.
+Installing assembly 'C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.InstallLog
+   assemblypath = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe
+Installing service SigConfigClient...
+Service SigConfigClient has been successfully installed.
+Creating EventLog source SigConfigClient in log Application...
+Committing assembly 'C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.InstallLog
+   assemblypath = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe
+Uninstalling assembly 'C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.InstallLog
+   assemblypath = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe
+Removing EventLog source SigConfigClient.
+Service SigConfigClient is being removed from the system...
+Service SigConfigClient was successfully removed from the system.
+Installing assembly 'C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.InstallLog
+   assemblypath = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe
+Installing service SigConfigClient...
+Service SigConfigClient has been successfully installed.
+Creating EventLog source SigConfigClient in log Application...
+Committing assembly 'C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.InstallLog
+   assemblypath = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe
+Uninstalling assembly 'C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.InstallLog
+   assemblypath = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe
+Removing EventLog source SigConfigClient.
+Service SigConfigClient is being removed from the system...
+Service SigConfigClient was successfully removed from the system.
+Installing assembly 'C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.InstallLog
+   assemblypath = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe
+Installing service SigConfigClient...
+Service SigConfigClient has been successfully installed.
+Creating EventLog source SigConfigClient in log Application...
+Committing assembly 'C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.InstallLog
+   assemblypath = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe
+Installing assembly 'C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.InstallLog
+   assemblypath = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe
+Installing service SigConfigClient...
+Creating EventLog source SigConfigClient in log Application...
+Rolling back assembly 'C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.InstallLog
+   assemblypath = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe
+Restoring event log to previous state for source SigConfigClient.
+Uninstalling assembly 'C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.InstallLog
+   assemblypath = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe
+Removing EventLog source SigConfigClient.
+Service SigConfigClient is being removed from the system...
+Service SigConfigClient was successfully removed from the system.
+Installing assembly 'C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.InstallLog
+   assemblypath = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe
+Installing service SigConfigClient...
+Service SigConfigClient has been successfully installed.
+Creating EventLog source SigConfigClient in log Application...
+Committing assembly 'C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.InstallLog
+   assemblypath = C:\Users\tom.wallis\Documents\sigConfig\sigConfig_service_client\SigConfig\sigConfigClient\bin\Debug\sigConfigClient.exe
