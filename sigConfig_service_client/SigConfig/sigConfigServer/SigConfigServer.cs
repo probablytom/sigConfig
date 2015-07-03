@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 namespace sigConfigServerService
 {
 
+    // Variables used by Windows service code
     public enum ServiceState
     {
         SERVICE_STOPPED = 0x00000001,
@@ -38,16 +39,20 @@ namespace sigConfigServerService
     public partial class sigConfigServer : ServiceBase
     {
 
+        // Importing a function for setting the status of the service
         [DllImport("advapi32.dll", SetLastError = true)]
         private static extern bool SetServiceStatus(IntPtr handle, ref ServiceStatus serviceStatus);
 
         public sigConfigServer(String[] args)
         {
+
+            // Initialise variables and check commandline arguments for values (for manual specific logging)
             InitializeComponent();
             this.AutoLog = false;
             sigConfigServerServiceLog = new System.Diagnostics.EventLog();
             string logSource = "sigConfigServerSource";
             string logName = "sigConfigServerLog";
+
 
             if (args.Count() > 0)
             {
@@ -58,13 +63,20 @@ namespace sigConfigServerService
                 logSource = args[1];
             }
 
+
             if (!System.Diagnostics.EventLog.SourceExists(logSource))
             {
                 System.Diagnostics.EventLog.CreateEventSource(logSource, logName);
             }
 
+
             sigConfigServerServiceLog.Source = logSource;
             sigConfigServerServiceLog.Log = logName;
+
+
+            // Logging
+            sigConfigServerServiceLog.WriteEntry("Roswell Email Signature Sync service (server mode) created.");
+
         }
 
         protected override void OnStart(string[] args)
@@ -111,7 +123,11 @@ namespace sigConfigServerService
 
         protected void onTimer()
         {
+            
+            sigConfigServerServiceLog.WriteEntry("Service woken by timer, performing sync and monitoring if necessary.", EventLogEntryType.Information);
+            
             // TODO: check file status when timer activates.
+            
             /* PSEUDOCODE:
              * 
              * get current status
@@ -125,7 +141,6 @@ namespace sigConfigServerService
              *      set status to previously running status
              * 
              */
-            sigConfigServerServiceLog.WriteEntry("Timer activated, no checking implemented!", EventLogEntryType.Information);
         }
 
     }
