@@ -8,10 +8,13 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using System.Messaging;
+using System.Windows.Forms;
 
 namespace sigConfigServerService
 {
 
+    // Variables used by Windows service code
     public enum ServiceState
     {
         SERVICE_STOPPED = 0x00000001,
@@ -38,16 +41,24 @@ namespace sigConfigServerService
     public partial class sigConfigServer : ServiceBase
     {
 
+        // Importing a function for setting the status of the service
         [DllImport("advapi32.dll", SetLastError = true)]
         private static extern bool SetServiceStatus(IntPtr handle, ref ServiceStatus serviceStatus);
 
+        // Messagequeue for all functions within namespace
+        private const string MESSAGE_QUEUE_PATH = @"Roswell19\sigConfigQueue";
+        private MessageQueue sigConfigMQ;
+
         public sigConfigServer(String[] args)
         {
+
+            // Initialise variables and check commandline arguments for values (for manual specific logging)
             InitializeComponent();
             this.AutoLog = false;
             sigConfigServerServiceLog = new System.Diagnostics.EventLog();
             string logSource = "sigConfigServerSource";
             string logName = "sigConfigServerLog";
+
 
             if (args.Count() > 0)
             {
@@ -58,16 +69,25 @@ namespace sigConfigServerService
                 logSource = args[1];
             }
 
+
             if (!System.Diagnostics.EventLog.SourceExists(logSource))
             {
                 System.Diagnostics.EventLog.CreateEventSource(logSource, logName);
             }
 
+
             sigConfigServerServiceLog.Source = logSource;
             sigConfigServerServiceLog.Log = logName;
+
+
+            // Logging
+            sigConfigServerServiceLog.WriteEntry("Roswell Email Signature Sync service (server mode) created.");
+
+            this.OnStart();
+
         }
 
-        protected override void OnStart(string[] args)
+        protected void OnStart()
         {
 
             // Update sigConfigServerService status to Start Pending.
@@ -82,8 +102,13 @@ namespace sigConfigServerService
 
             // Log that the service has begun. 
             sigConfigServerServiceLog.WriteEntry("Started sigConfig server.");
-   
+
+            
+
             // TODO: Check file status on service start and perform the first iteration of updates if so. 
+
+            SendMessage("Testing, testing!");
+
         }
 
         protected override void OnStop()
@@ -111,7 +136,11 @@ namespace sigConfigServerService
 
         protected void onTimer()
         {
+            
+            sigConfigServerServiceLog.WriteEntry("Service woken by timer, performing sync and monitoring if necessary.", EventLogEntryType.Information);
+            
             // TODO: check file status when timer activates.
+            
             /* PSEUDOCODE:
              * 
              * get current status
@@ -125,9 +154,42 @@ namespace sigConfigServerService
              *      set status to previously running status
              * 
              */
-            sigConfigServerServiceLog.WriteEntry("Timer activated, no checking implemented!", EventLogEntryType.Information);
         }
 
+        private void SendMessage(string messageText)
+        {
+            try
+            {
+
+                // Create the message queue
+                if (!MessageQueue.Exists(MESSAGE_QUEUE_PATH))
+                {
+                    sigConfigMQ = MessageQueue.Create(MESSAGE_QUEUE_PATH);
+                }
+                else
+                {
+                    // Get the queue at Roswell19 with the name "sigConfigQueue".
+                    for (int i = 0; i < MessageQueue.GetPublicQueuesByMachine("Roswell19").Length; i++)
+                    {
+                        if (MessageQueue.GetPublicQueuesByMachine("Roswell19")[i].QueueName == "sigConfigQueue")
+                        {
+                            sigConfigMQ = MessageQueue.GetPublicQueuesByMachine("Roswell19")[i];
+                        }
+                    }
+                } 
+
+                // Send a new message.
+                System.Messaging.Message message = new System.Messaging.Message();
+                message.Body = messageText;
+                message.Label = "Email signature update required";
+                sigConfigMQ.Send(message); // Message sent!
+            }
+            catch (Exception ex)
+            {
+                sigConfigServerServiceLog.WriteEntry("Couldn't send message.\nError was: " + ex.Message);
+            }
+
+        }
     }
 
 }
