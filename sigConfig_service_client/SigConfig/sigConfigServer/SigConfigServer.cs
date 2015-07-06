@@ -166,8 +166,19 @@ namespace sigConfigServerService
                 {
                     sigConfigServerServiceLog.WriteEntry("Creating MQ.");
                     sigConfigMQ = MessageQueue.Create(MESSAGE_QUEUE_PATH);
-                    sigConfigServerServiceLog.WriteEntry("Created MQ.");
                 }
+                else
+                {
+                    // Get the queue at Roswell19 with the name "sigConfigQueue".
+                    String toLog = "";
+                    for (int i = 0; i < MessageQueue.GetPublicQueuesByMachine("Roswell19").Length; i++)
+                    {
+                        if (MessageQueue.GetPublicQueuesByMachine("Roswell19")[i].QueueName == "sigConfigQueue")
+                        {
+                            sigConfigMQ = MessageQueue.GetPublicQueuesByMachine("Roswell19")[i];
+                        }
+                    }
+                } 
 
                 sigConfigServerServiceLog.WriteEntry("Attempting to send message.");
                 System.Messaging.Message message = new System.Messaging.Message();
@@ -178,7 +189,7 @@ namespace sigConfigServerService
                 sigConfigServerServiceLog.WriteEntry("Beginning transaction.");
                 signalTransaction.Begin();
                 sigConfigServerServiceLog.WriteEntry("Sending message:\n----------------------------\n" + message.ToString() + "\n" + signalTransaction.ToString());
-                sigConfigMQ.Send(message, signalTransaction);
+                sigConfigMQ.Send(message);//, signalTransaction);
                 sigConfigServerServiceLog.WriteEntry("Message sent");
                 signalTransaction.Commit();
                 sigConfigServerServiceLog.WriteEntry("Transaction committed");

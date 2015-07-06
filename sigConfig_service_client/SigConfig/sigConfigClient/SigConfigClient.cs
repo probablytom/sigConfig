@@ -161,10 +161,26 @@ namespace sigConfigClientService
         {
             try
             {
-                sigConfigClientServiceLog.WriteEntry("Attempting to recieve message.");
-                sigConfigClientServiceLog.WriteEntry("Creating message queue.");
-                sigConfigMQ = new MessageQueue(MESSAGE_QUEUE_PATH);
-                sigConfigClientServiceLog.WriteEntry("Created queue at: " + MESSAGE_QUEUE_PATH + "\nAttempting to receive message.");
+                // Create the message queue
+                if (!MessageQueue.Exists(MESSAGE_QUEUE_PATH))
+                {
+                    sigConfigClientServiceLog.WriteEntry("Creating MQ.");
+                    sigConfigMQ = MessageQueue.Create(MESSAGE_QUEUE_PATH);
+                }
+                else
+                {
+                    sigConfigClientServiceLog.WriteEntry("Collecting existing queue.");
+                    // Get the queue at Roswell19 with the name "sigConfigQueue".
+                    String toLog = "";
+                    for (int i = 0; i < MessageQueue.GetPublicQueuesByMachine("Roswell19").Length; i++)
+                    {
+                        if ( MessageQueue.GetPublicQueuesByMachine("Roswell19")[i].QueueName == "sigConfigQueue") {
+                            sigConfigMQ = MessageQueue.GetPublicQueuesByMachine("Roswell19")[i];
+                        }
+                    }
+                } 
+                
+                
                 System.Messaging.Message message = sigConfigMQ.Receive(new TimeSpan(0, 0, 1)); // bombing out here! WHY?!
                 sigConfigClientServiceLog.WriteEntry("Received message!\nAttempting to extract content from XML received.");
                 message.Formatter = new XmlMessageFormatter(new String[] { "System.String,mscorlib" });
