@@ -86,7 +86,6 @@ namespace sigConfigClientService
 
         protected void OnStart()
         {
-            sigConfigClientServiceLog.WriteEntry("In OnStart");
 
             // Setting up a timer to trigger every minute.
             System.Timers.Timer timer = new System.Timers.Timer();
@@ -107,14 +106,13 @@ namespace sigConfigClientService
             // TODO: Check here that the MQ is still alive. If it isn't, wake it up. 
 
             // TODO: Check any messages in the queue
-            this.RecieveMessage();
+            this.ReceiveMessage();
 
             // TODO: For any messages we find, process them with [FUNCTION TO BE WRITTEN]().
         }
 
         protected override void OnStop()
         {
-            sigConfigClientServiceLog.WriteEntry("Stopping.");
 
             // Update the service state to pend ending.
             ServiceStatus serviceStatus = new ServiceStatus();
@@ -129,10 +127,10 @@ namespace sigConfigClientService
 
         public void OnTimer(object sender, System.Timers.ElapsedEventArgs args)
         {
-            // TODO: Insert monitoring activities here.
-            sigConfigClientServiceLog.WriteEntry("Service woken by timer, performing sync and monitoring if necessary.", EventLogEntryType.Information);
+            //sigConfigClientServiceLog.WriteEntry("Service woken by timer, performing sync and monitoring if necessary.", EventLogEntryType.Information);
+            ReceiveMessage();
 
-            // TODO: check file status when timer activates.
+            // TODO: check file status when timer activates, just in case there's no message.
             /* PSEUDOCODE:
              * 
              * get current status
@@ -157,38 +155,39 @@ namespace sigConfigClientService
 
 
         // Get messages from the message queue
-        private void RecieveMessage()
+        private void ReceiveMessage()
         {
             try
             {
-                // Create the message queue
+                
+                // Create the message queue if it doesn't already exist
                 if (!MessageQueue.Exists(MESSAGE_QUEUE_PATH))
                 {
-                    sigConfigClientServiceLog.WriteEntry("Creating MQ.");
                     sigConfigMQ = MessageQueue.Create(MESSAGE_QUEUE_PATH);
                 }
                 else
                 {
-                    sigConfigClientServiceLog.WriteEntry("Collecting existing queue.");
+                    // A queue already existed!
                     // Get the queue at Roswell19 with the name "sigConfigQueue".
-                    String toLog = "";
+                    // TODO: change this to work with a configured hostname!
                     for (int i = 0; i < MessageQueue.GetPublicQueuesByMachine("Roswell19").Length; i++)
                     {
-                        if ( MessageQueue.GetPublicQueuesByMachine("Roswell19")[i].QueueName == "sigConfigQueue") {
+                        if (MessageQueue.GetPublicQueuesByMachine("Roswell19")[i].QueueName == "sigConfigQueue")
+                        {
                             sigConfigMQ = MessageQueue.GetPublicQueuesByMachine("Roswell19")[i];
                         }
                     }
                 } 
                 
                 
-                System.Messaging.Message message = sigConfigMQ.Receive(new TimeSpan(0, 0, 1)); // bombing out here! WHY?!
-                sigConfigClientServiceLog.WriteEntry("Received message!\nAttempting to extract content from XML received.");
+                // Receive message
+                System.Messaging.Message message = sigConfigMQ.Receive(new TimeSpan(0, 0, 1)); 
                 message.Formatter = new XmlMessageFormatter(new String[] { "System.String,mscorlib" });
-                sigConfigClientServiceLog.WriteEntry("Message reads: " + message.Body.ToString());
+                sigConfigClientServiceLog.WriteEntry("Received message with signature update.");
             }
             catch (Exception ex)
             {
-                sigConfigClientServiceLog.WriteEntry("No message found.");
+                //sigConfigClientServiceLog.WriteEntry("No message found.");
             }
         }
     }

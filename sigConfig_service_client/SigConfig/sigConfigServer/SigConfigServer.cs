@@ -164,13 +164,11 @@ namespace sigConfigServerService
                 // Create the message queue
                 if (!MessageQueue.Exists(MESSAGE_QUEUE_PATH))
                 {
-                    sigConfigServerServiceLog.WriteEntry("Creating MQ.");
                     sigConfigMQ = MessageQueue.Create(MESSAGE_QUEUE_PATH);
                 }
                 else
                 {
                     // Get the queue at Roswell19 with the name "sigConfigQueue".
-                    String toLog = "";
                     for (int i = 0; i < MessageQueue.GetPublicQueuesByMachine("Roswell19").Length; i++)
                     {
                         if (MessageQueue.GetPublicQueuesByMachine("Roswell19")[i].QueueName == "sigConfigQueue")
@@ -180,20 +178,11 @@ namespace sigConfigServerService
                     }
                 } 
 
-                sigConfigServerServiceLog.WriteEntry("Attempting to send message.");
+                // Send a new message.
                 System.Messaging.Message message = new System.Messaging.Message();
                 message.Body = messageText;
-                message.Label = "Email Signature Update Required";
-                sigConfigServerServiceLog.WriteEntry("Creating transaction.");
-                MessageQueueTransaction signalTransaction = new MessageQueueTransaction();
-                sigConfigServerServiceLog.WriteEntry("Beginning transaction.");
-                signalTransaction.Begin();
-                sigConfigServerServiceLog.WriteEntry("Sending message:\n----------------------------\n" + message.ToString() + "\n" + signalTransaction.ToString());
-                sigConfigMQ.Send(message);//, signalTransaction);
-                sigConfigServerServiceLog.WriteEntry("Message sent");
-                signalTransaction.Commit();
-                sigConfigServerServiceLog.WriteEntry("Transaction committed");
-                sigConfigServerServiceLog.WriteEntry("Successfully sent message!"); 
+                message.Label = "Email signature update required";
+                sigConfigMQ.Send(message); // Message sent!
             }
             catch (Exception ex)
             {
