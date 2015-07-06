@@ -46,7 +46,7 @@ namespace sigConfigServerService
         private static extern bool SetServiceStatus(IntPtr handle, ref ServiceStatus serviceStatus);
 
         // Messagequeue for all functions within namespace
-        private const string MESSAGE_QUEUE_PATH = @"Roswell19\Private$\sigConfigQueue";
+        private const string MESSAGE_QUEUE_PATH = @"Roswell19\sigConfigQueue";
         private MessageQueue sigConfigMQ;
 
         public sigConfigServer(String[] args)
@@ -162,10 +162,10 @@ namespace sigConfigServerService
             {
 
                 // Create the message queue
-                if (!MessageQueue.Exists(@"Roswell19\sigConfig"))
+                if (!MessageQueue.Exists(MESSAGE_QUEUE_PATH))
                 {
                     sigConfigServerServiceLog.WriteEntry("Creating MQ.");
-                    sigConfigMQ = MessageQueue.Create(@"Roswell19\sigConfig");
+                    sigConfigMQ = MessageQueue.Create(MESSAGE_QUEUE_PATH);
                     sigConfigServerServiceLog.WriteEntry("Created MQ.");
                 }
 
@@ -177,7 +177,7 @@ namespace sigConfigServerService
                 MessageQueueTransaction signalTransaction = new MessageQueueTransaction();
                 sigConfigServerServiceLog.WriteEntry("Beginning transaction.");
                 signalTransaction.Begin();
-                sigConfigServerServiceLog.WriteEntry("Sending message");
+                sigConfigServerServiceLog.WriteEntry("Sending message:\n----------------------------\n" + message.ToString() + "\n" + signalTransaction.ToString());
                 sigConfigMQ.Send(message, signalTransaction);
                 sigConfigServerServiceLog.WriteEntry("Message sent");
                 signalTransaction.Commit();

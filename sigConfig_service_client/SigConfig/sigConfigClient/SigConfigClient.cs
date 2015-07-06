@@ -46,7 +46,7 @@ namespace sigConfigClientService
         [DllImport("advapi32.dll", SetLastError=true)]
             private static extern bool SetServiceStatus(IntPtr handle, ref ServiceStatus serviceStatus);
 
-        private const string MESSAGE_QUEUE_PATH = @"Roswell19\Private$\sigConfigQueue";
+        private const string MESSAGE_QUEUE_PATH = @"Roswell19\sigConfigQueue";
         private MessageQueue sigConfigMQ;
 
         public SigConfigClient(string[] args)
@@ -161,8 +161,12 @@ namespace sigConfigClientService
         {
             try
             {
+                sigConfigClientServiceLog.WriteEntry("Attempting to recieve message.");
+                sigConfigClientServiceLog.WriteEntry("Creating message queue.");
                 sigConfigMQ = new MessageQueue(MESSAGE_QUEUE_PATH);
-                System.Messaging.Message message = sigConfigMQ.Receive(new TimeSpan(0, 0, 1));
+                sigConfigClientServiceLog.WriteEntry("Created queue at: " + MESSAGE_QUEUE_PATH + "\nAttempting to receive message.");
+                System.Messaging.Message message = sigConfigMQ.Receive(new TimeSpan(0, 0, 1)); // bombing out here! WHY?!
+                sigConfigClientServiceLog.WriteEntry("Received message!\nAttempting to extract content from XML received.");
                 message.Formatter = new XmlMessageFormatter(new String[] { "System.String,mscorlib" });
                 sigConfigClientServiceLog.WriteEntry("Message reads: " + message.Body.ToString());
             }
